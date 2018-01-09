@@ -1,0 +1,43 @@
+
+<div class="card bd-primary mg-t-20">
+    <div class="card-header bg-primary tx-white">Data Kategori</div>
+        <div class="card-body pd-sm-30">
+            <div class="table-wrapper">
+              <table id="datatable1" class="table table-hover table-striped">
+				<thead>
+					<th>Nama Tempat</th>
+					<th>Kategori</th>
+					<th>Lokasi</th>
+					<th>Deskripsi</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+
+					{{#if tempat}}
+						{{#each tempat}}
+						<tr>
+							<td width="15%">{{nama_tempat}}</td>
+							<td width="10%">{{kategori}}</td>
+							<td width="20%">{{lokasi}}</td>
+							<td width="20%">{{deskripsi}}</td>
+							<td width="20%">
+								<a href="/tempat/show/{{_id}}" class="btn rounded-circle btn-info"><i class="fa fa-compass"></i></a>
+								<a href="/tempat/edit/{{_id}}" class="btn rounded-circle btn-warning"><i class="fa fa-pencil"></i></a>
+								<form class="d-inline" action="/tempat/{{id}}?_method=DELETE" method="post">
+					                <input type="hidden" name="_method" value="DELETE">
+					                <button type="submit" class="btn rounded-circle btn-danger"><i class="fa fa-trash"></i></button>
+					            </form>
+							</td>
+						</tr>
+						{{/each}}
+					{{else}}
+						<tr>
+							<td colspan="2" class="text-center">Data Lokasi Tidak Tersedia, <a href="/tempat/add">Tambah Lokasi</a></td>
+						</tr>
+					{{/if}}
+				</tbody>
+			</table>
+            </div>
+        </div>
+    </div>
+</div>

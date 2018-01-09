@@ -1,0 +1,15 @@
+{{#if error}}
+  <div class="alert alert-danger">{{error}}</div>
+{{/if}}
+
+{{#each errors}}
+  	<div class="alert alert-danger" role="alert">
+      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        	<span aria-hidden="true">&times;</span>
+      	</button>
+      	<div class="d-flex align-items-center justify-content-start">
+        	<i class="icon ion-ios-close alert-icon tx-24"></i>
+        	<span><strong>Aduh!</strong> {{text}}</span>
+      	</div><!-- d-flex -->
+    </div><!-- alert -->
+{{/each}}

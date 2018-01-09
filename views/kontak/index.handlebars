@@ -1,0 +1,39 @@
+
+<div class="card bd-primary mg-t-20">
+    <div class="card-header bg-primary tx-white">Data Kontak</div>
+        <div class="card-body pd-sm-30">
+            <div class="table-wrapper">
+              <table id="datatable1" class="table display responsive nowrap">
+              	<thead>
+					<th>Keterangan</th>
+					<th>No Telepon</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+					{{#if kontak}}
+						{{#each kontak}}
+						<tr>
+							<td>{{keterangan}}</td>
+							<td>{{no_telepon}}</td>
+							<td>
+								<a href="/kontak/edit/{{_id}}" class="btn btn-warning">Edit</a>
+								<form class="d-inline" action="/kontak/{{id}}?_method=DELETE" method="post">
+					                <input type="hidden" name="_method" value="DELETE">
+					                <button type="submit" class="btn btn-danger">Delete</button>
+					            </form>
+							</td>
+						</tr>
+						{{/each}}
+					{{else}}
+						<tr>
+							<td colspan="3" class="text-center">Data Kontak Tidak Tersedia, <a href="/kontak/add">Tambah Kontak</a></td>
+						</tr>
+					{{/if}}
+				</tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

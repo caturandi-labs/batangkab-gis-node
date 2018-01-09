@@ -1,0 +1,41 @@
+
+<div class="card bd-primary mg-t-20">
+    <div class="card-header bg-primary tx-white">Data Informasi Umum</div>
+        <div class="card-body pd-sm-30">
+            <div class="table-wrapper">
+              <table id="datatable1" class="table display responsive nowrap">
+              	<thead>
+					<th>URL Pemkab</th>
+					<th>URL Persibat</th>
+					<th>URL Info Batang</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+					{{#if umum}}
+						{{#each umum}}
+						<tr>
+							<td>{{url_pemkab}}</td>
+							<td>{{url_persibat}}</td>
+							<td>{{url_infobatang}}</td>
+							<td>
+								<a href="/umum/edit/{{_id}}" class="btn btn-warning">Edit</a>
+								<form class="d-inline" action="/umum/{{id}}?_method=DELETE" method="post">
+					                <input type="hidden" name="_method" value="DELETE">
+					                <button type="submit" class="btn btn-danger">Delete</button>
+					            </form>
+							</td>
+						</tr>
+						{{/each}}
+					{{else}}
+						<tr>
+							<td colspan="2" class="text-center">Data Informasi Tidak Tersedia, <a href="/umum/add">Tambah Informasi Umum</a></td>
+						</tr>
+					{{/if}}
+				</tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

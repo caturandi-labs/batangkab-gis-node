@@ -1,0 +1,37 @@
+
+<div class="card bd-primary mg-t-20">
+    <div class="card-header bg-primary tx-white">Data Kategori</div>
+        <div class="card-body pd-sm-30">
+            <div class="table-wrapper">
+              <table id="datatable1" class="table display responsive nowrap">
+              	<thead>
+					<th>Nama Kategori</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+					{{#if kategori}}
+						{{#each kategori}}
+						<tr>
+							<td>{{nama_kategori}}</td>
+							<td>
+								<a href="/kategori/edit/{{_id}}" class="btn btn-warning">Edit</a>
+								<form class="d-inline" action="/kategori/{{id}}?_method=DELETE" method="post">
+					                <input type="hidden" name="_method" value="DELETE">
+					                <button type="submit" class="btn btn-danger">Delete</button>
+					            </form>
+							</td>
+						</tr>
+						{{/each}}
+					{{else}}
+						<tr>
+							<td colspan="2" class="text-center">Data Kategori Tidak Tersedia, <a href="/kategori/add">Tambah Kategori</a></td>
+						</tr>
+					{{/if}}
+				</tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

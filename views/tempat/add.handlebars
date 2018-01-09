@@ -1,0 +1,114 @@
+
+    <div class="card rounded-0">
+      	<div class="card-header card-header bg-indigo tx-white">
+        	Peta Lokasi Kab.Batang
+      	</div>
+      	<div style="height: 500px" class="card-body" id="peta"></div>
+    </div>
+	
+	{{!-- Form Tambah --}}
+	<div class="card rounded-0">
+	  	<div class="card-header card-header bg-indigo tx-white">
+	    	Tambah Data Tempat/Lokasi
+	  	</div>
+
+	  	<div class="card-body">
+			<form method="post" action="/tempat">
+				<div class="form-group">
+					<label for="nama_tempat" class="control-label">Nama Tempat</label>
+					<input type="text" autofocus="true"  name="nama_tempat" placeholder="Nama Tempat/Lokasi" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="kategori" class="control-label">Kategori</label>
+					<select name="kategori" class="form-control">
+						{{#each kategori}}
+							<option value="{{_id}}">{{nama_kategori}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="lokasi" class="control-label">Lokasi</label>
+					<input type="text" name="lokasi" placeholder="Lokasi Tempat" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="deskripsi" class="control-label">Deskripsi</label>
+					<textarea class="form-control" name="deskripsi" cols="30" rows="4" placeholder="Deskripsi Tempat/Lokasi"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="telepon" class="control-label">Telepon</label>
+					<input type="text" name="telepon" placeholder="No. Telepon" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="longitude" class="control-label">Longitude</label>
+					<input type="text" readonly="true" name="longitude" id="longitude" placeholder="Koordinat Longitude" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="latitude" class="control-label">Latitude</label>
+					<input type="text" readonly="true" name="latitude" id="latitude" placeholder="Kordinat Latitude" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="image" class="control-label">Gambar</label>
+					<input type="text" name="image" class="form-control" placeholder="Link Gambar">
+				</div>
+
+				<button type="submit" class="btn btn-primary">Simpan</button>
+			</form>
+		</div>
+	</div>
+
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcnWMAOHYqicZjtuzDqS-rJHWuCqTwR9E&callback=initMap"
+    async defer></script>
+
+<script type="text/javascript">
+
+    var map;
+    var markers = [];
+    const ICON = window.location.origin + `/images/icon.png`;
+    
+    console.log(ICON);
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('peta'), {
+          center: {lat:  -6.907845, lng: 109.730267},
+          zoom: 19
+        });
+
+        google.maps.event.addListener(map, 'rightclick', addLatLng);
+        google.maps.event.addListener(map, "rightclick", function(event) {
+          var lat = event.latLng.lat();
+          var lng = event.latLng.lng();
+          $('#latitude').val(lat);
+          $('#longitude').val(lng);
+        });
+
+    }
+
+    function addLatLng(event) {
+        let title = $('#nama_tempat').val();
+        setMapOnAll(null);
+        var marker = new google.maps.Marker({
+            position: event.latLng,
+            title: title,
+            map: map,
+          	icon: ICON
+        });
+        markers.push(marker);
+    }
+    //membersihkan peta dari marker
+    function clearmap(e){
+        e.preventDefault();
+        $('#latitude').val('');
+        $('#longitude').val('');
+        setMapOnAll(null);
+    }
+    //buat hapus marker
+    function setMapOnAll(map) {
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+      }
+      markers = [];
+    }
+</script>

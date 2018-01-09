@@ -1,0 +1,18 @@
+<div class="card-body">
+	<form method="post" action="/umum/{{umum._id}}?_method=PUT">
+		<div class="form-group">
+			<label for="url_pemkab" class="control-label">URL Pemkab</label>
+			<input type="text" value="{{umum.url_pemkab}}" name="url_pemkab" placeholder="URL Pemerintahan" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="url_persibat" class="control-label">URL Persibat</label>
+			<input type="text" value="{{umum.url_persibat}}" name="url_persibat" placeholder="URL Persibat" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="url_infobatang" class="control-label">URL Info Batang</label>
+			<input type="text" value="{{umum.url_infobatang}}" name="url_infobatang" placeholder="Keterangan" class="form-control">
+		</div>
+		<button type="submit" class="btn btn-primary">Simpan</button>
+		<button type="reset" class="btn btn-warning">Batal</button>
+	</form>
+</div>

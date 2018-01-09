@@ -1,0 +1,20 @@
+{{#if success_msg}}
+ 	<div class="alert alert-success pd-y-20" role="alert">
+      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        	<span aria-hidden="true">&times;</span>
+      	</button>
+      	<div class="d-sm-flex align-items-center justify-content-start">
+        	<i class="icon ion-ios-checkmark alert-icon tx-52 mg-r-20 tx-success"></i>
+        	<div class="mg-t-20 mg-sm-t-0">
+          		<h5 class="mg-b-2 tx-success">{{success_msg}}</h5>
+        	</div>
+      	</div><!-- d-flex -->
+    </div><!-- alert -->
+{{/if}}
+
+{{#if error_msg}}
+  <div class="alert alert-danger">{{error_msg}}</div>
+{{/if}}
+
+
+
