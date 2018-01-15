@@ -102,7 +102,8 @@ router.put('/:id/',ensureAuthenticated,(req, res) => {
 	Kontak.findOneAndUpdate({
 		_id: req.params.id
 	}, {
-			nama_kontak: req.body.nama_kontak
+			keterangan: req.body.keterangan,
+			no_kontak: req.body.no_kontak
 		})
 		.then(Kontak => {
 			req.flash('success_msg', 'Kontak Berhasil Diperbarui');
